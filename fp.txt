@@ -5,53 +5,50 @@ classe = barbare
 niveau = 20
 
 [carac]
-for = 
-dex = 
-con = 
-int = 
+for = 18 
+dex = 12
+con = 14
+int = 15
 sag = 16
-cha = 
+cha = 5
 
 [saves]
-ref = 
-vig = 
-vol = 
+ref = 5
+vig = 3
+vol = 4
 
 [res]
-acide = 
-feu = 
-poison = 
-froid = 
-son = 
-eclair = 
-rm = 
-divers = 
+acide = 0 
+feu = 0
+poison = 0
+froid = 0
+son = 0
+eclair = 0
+rm = 0
+divers = 0
 
 [pv]
-max = 
-actuels = 
-rd = 
-regen = 
+max = 256
+actuels = 134
+rd = 0
+regen = 0
 
 [attaque]
-bba = 
-init = 
-bmo = 
+bba = 20
+init = 6
+bmo = 12
 
 [armes]
-nom = 
-degats = 
-crit1 = 
+nom = epee
 nom2 = 
-degats2 = 
-crit2 = 
+mains = 2
 
 [def]
-armure = 
-bouclier = 
-nat = 
-esq = 
-div = 
+armure = 15
+bouclier = 1
+nat = 4
+esq = 2
+div = 1
 
 [comp]
 acrobatie = 

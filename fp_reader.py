@@ -17,8 +17,14 @@ def help():
     print(" Pour changer une valeur taper ")
     print(" set <catégorie> <nom> <valeur>")
     print(" (ex. : set pv actuels 16)")
-    print("---------------------------------------------")
     print("   Pour calculer le bonus total à une ")
+    print("---------------------------------------------")
+    print("    Pour faire un jet de sauvegarde taper")
+    print("            svg (ref|vig|vol)")
+    print("---------------------------------------------")
+    print("    Pour connaître le bonus total d'attaque")
+    print("    taper atk (puissance/finesse en option)")
+    print("---------------------------------------------")
     print("          compétence taper calc <comp>")
     print("   les noms de compétences n'ont pas d'accent")
     print("---------------------------------------------")
@@ -54,6 +60,38 @@ def test_comp(config,comp):
     print("Dé......" + str(dice))
     print("Total..." + str(total))
 
+def svg(config, test):
+    dice = random.randint(1,20)
+    total = dice + int(config['saves'][test])
+    print("Bonus..." + str(config['saves'][test]))
+    time.sleep(1)
+    print("Roule roule roule...")
+    time.sleep(1)
+    print("Dé......" + str(dice))
+    print("Total..." + str(total))
+
+def atk(config, mode):
+    bba = int(config['attaque']['bba'])
+    dex = get_mod(config, 'dex')
+    force = get_mod(config, 'for')
+    mains = int(config['armes']['mains'])
+    malus = 0
+    b_degats = 0
+    if mains == 2:
+        force = math.floor(force * 1.5)
+    if mode == 'puissance':
+        malus = math.floor(bba / 4) + 1
+        if mains == 2:
+            malus = math.floor(malus * 1.5)
+        b_degats = malus * 2
+    elif mode == 'finesse':
+        force = dex
+    bonus = bba - malus + force
+    degats = force + b_degats
+    print("Bonus à l'attaque : "+ str(bonus))
+    print("Bonus aux dégâts  : "+ str(degats) + " + dégâts de l'arme")
+
+
 def menu():
     config = configparser.ConfigParser()
     config.read('fp.txt')
@@ -61,16 +99,22 @@ def menu():
     while 1:
         rawcom = str(input("______________\n|> "))
         com = rawcom.split(" ")[0]
-        if com != 'set' and com != 'exit' and com != 'help' and com != 'save' and com != 'calc' and com != 'test':
+        # à remplacer par une liste =_=
+        if com != "atk" and com != 'svg' and com != 'set' and com != 'exit' and com != 'help' and com != 'save' and com != 'calc' and com != 'test':
             print("==== " + com.upper() + " ====")
             for key in config[com]:
                 print(key + ": " + config[com][key])
         elif com == 'exit':
             break
+        elif com == 'svg':
+            try:
+                toto = rawcom.split(" ")[1]
+            except IndexError:
+                print("précisez un type de sauvegarde")
+            svg(config, toto)
         elif com == 'help':
             help()
         elif com == 'set':
-            toto = ""
             try:
                 toto = rawcom.split(" ")[3]
             except IndexError:
@@ -83,6 +127,11 @@ def menu():
             print("bonus en " + rawcom.split(" ")[1] + " : " + str(calc_bonus(config, rawcom.split(" ")[1])))
         elif com == 'test':
             test_comp(config, rawcom.split(" ")[1])
-
+        elif com == 'atk':
+            try:
+                mode = rawcom.split(" ")[1]
+            except IndexError:
+                mode = ""
+            atk(config,mode)
 if __name__ == "__main__":
     menu()
