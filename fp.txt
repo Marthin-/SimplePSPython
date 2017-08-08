@@ -1,0 +1,97 @@
+[general]
+nom = toto
+race = humain
+classe = barbare
+niveau = 20
+
+[carac]
+for = 
+dex = 
+con = 
+int = 
+sag = 16
+cha = 
+
+[saves]
+ref = 
+vig = 
+vol = 
+
+[res]
+acide = 
+feu = 
+poison = 
+froid = 
+son = 
+eclair = 
+rm = 
+divers = 
+
+[pv]
+max = 
+actuels = 
+rd = 
+regen = 
+
+[attaque]
+bba = 
+init = 
+bmo = 
+
+[armes]
+nom = 
+degats = 
+crit1 = 
+nom2 = 
+degats2 = 
+crit2 = 
+
+[def]
+armure = 
+bouclier = 
+nat = 
+esq = 
+div = 
+
+[comp]
+acrobatie = 
+adm = 
+artisanat = 
+bluff = 
+exploration = 
+folklore = 
+geo = 
+histoire = 
+ingenierie = 
+mysteres = 
+nature = 
+noblesse = 
+plans = 
+religion = 
+deguisement = 
+diplomatie = 
+discretion = 
+dressage = 
+equitation = 
+escalade = 
+escamotage = 
+estimation = 
+evasion = 
+intimidation = 
+linguistique = 
+natation = 
+perception = 
+secours = 5
+profession = 
+psychologie = 
+representation = 
+sabotage = 
+survie = 
+uom = 
+vol = 
+
+[dons]
+
+[inventaire]
+flèches = 10
+
