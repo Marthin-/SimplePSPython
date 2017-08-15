@@ -98,12 +98,18 @@ def menu():
     help()
     while 1:
         rawcom = str(input("______________\n|> "))
-        com = rawcom.split(" ")[0]
+        if rawcom != '':
+            com = rawcom.split(" ")[0]
+        else:
+            com = ''
         # à remplacer par une liste =_=
-        if com != "atk" and com != 'svg' and com != 'set' and com != 'exit' and com != 'help' and com != 'save' and com != 'calc' and com != 'test':
-            print("==== " + com.upper() + " ====")
-            for key in config[com]:
-                print(key + ": " + config[com][key])
+        if com != '' and com != "atk" and com != 'svg' and com != 'set' and com != 'exit' and com != 'help' and com != 'save' and com != 'calc' and com != 'test':
+            try:
+                print("==== " + com.upper() + " ====")
+                for key in config[com]:
+                    print(key + ": " + config[com][key])
+            except KeyError:
+                print("Tape la bonne commande vieux bouc")
         elif com == 'exit':
             break
         elif com == 'svg':
@@ -133,5 +139,9 @@ def menu():
             except IndexError:
                 mode = ""
             atk(config,mode)
+        elif com == '':
+            help()
+        else:
+            help()
 if __name__ == "__main__":
     menu()
